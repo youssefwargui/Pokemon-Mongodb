@@ -1,18 +1,53 @@
-
+const pokemon = require("../model/Pokemon")
 const controller = {
-  createOne: function (req, res) {
+  createOne: async (req, res) => {
+  try{
+     await pokemon.create(req.body)
+      res.status(201).send("pokemon created")
+    }
+    catch(error) {
+     res.status(500).send(error.message)
+    } 
   },
 
-  retrieve: function (req, res) {
+  retrieve: async (req, res) => {
+    try{
+      const data = await pokemon.find()
+      res.status(200).json(data)
+    }
+    catch(error) {
+     res.status(500).send(error.message)
+    }
   },
 
-  retrieveOne: function (req, res) {
+  retrieveOne: async (req, res) => {
+    try{
+      const data = await pokemon.findById(req.params.id)
+      res.status(200).json(data)
+    }
+    catch(error) {
+     res.status(500).send(error.message)
+    }
   },
 
-  updateOne: function (req, res) {
+  updateOne: async (req, res) => {
+   try{
+       await pokemon.findByIdAndUpdate(req.params.id , req.body)
+      res.status(200).send("pokemon Updated")
+    }
+    catch(error) {
+     res.status(500).send(error.message)
+    }
   },
 
-  deleteOne: function (req, res) {
+  deleteOne:  async (req, res) => {
+    try{
+       await pokemon.findByIdAndDelete(req.params.id)
+      res.status(204).send("pokemon deleted")
+    }
+    catch(error) {
+     res.status(500).send(error.message)
+    }
   }
 };
 

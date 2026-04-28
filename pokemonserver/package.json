@@ -4,14 +4,15 @@
   "description": "A Pokémon API",
   "main": "server/index.js",
   "scripts": {
-  "start": "nodemon server/server.js",
-  "seed:db": "node server/db/seed"
+    "start": "nodemon server/server.js",
+    "seed:db": "node server/db/seed"
   },
   "author": "You!",
   "private": true,
   "license": "UNLICENSED",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "mongoose": "^9.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

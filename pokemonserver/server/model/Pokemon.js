@@ -1,8 +1,13 @@
 var mongoose = require('mongoose');
 
-var pokemonSchema;
+var pokemonSchema = mongoose.Schema ({
+    imageUrl : String ,
+    name: String ,
+    number : Number,
+    types : String
+})
  
-var Pokemon;
+var Pokemon = mongoose.model("pokemon" , pokemonSchema)
  
 
 
